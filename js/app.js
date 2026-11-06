@@ -133,10 +133,24 @@
         if (!e.isIntersecting) return;
         enlaces.forEach((a) => a.setAttribute("aria-current", a.hash === "#" + e.target.id ? "true" : "false"));
         const activo = enlaces.find((a) => a.hash === "#" + e.target.id);
-        activo?.scrollIntoView({ block: "nearest", inline: "nearest" });
+        if (activo) mostrarEnBarra(nav, activo);
       });
     }, { rootMargin: "-140px 0px -60% 0px" });
     lista.querySelectorAll(".grupo").forEach((g) => obs.observe(g));
+  }
+
+  // Desplaza SOLO la barra de categorías (horizontalmente) para que se vea la activa.
+  // No usar scrollIntoView: también mueve la página y corta el scroll del usuario.
+  function mostrarEnBarra(nav, enlace) {
+    const rNav = nav.getBoundingClientRect(), rEnl = enlace.getBoundingClientRect();
+    const izq = rEnl.left - rNav.left + nav.scrollLeft;
+    const der = izq + rEnl.width;
+    const margen = 16;
+    if (izq < nav.scrollLeft + margen) {
+      nav.scrollTo({ left: izq - margen, behavior: "smooth" });
+    } else if (der > nav.scrollLeft + nav.clientWidth - margen) {
+      nav.scrollTo({ left: der - nav.clientWidth + margen, behavior: "smooth" });
+    }
   }
 
   function pintarControles() {
