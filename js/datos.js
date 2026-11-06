@@ -4,9 +4,9 @@
  */
 const RESTAURANTE = {
   nombre: "Fogón del Algarrobo",
-  // Número de WhatsApp en formato internacional, sin "+" ni espacios.
-  // DEMO: reemplazar por el número real del negocio.
-  whatsapp: "51900000000",
+  // Número de WhatsApp en formato internacional (51 = Perú), sin "+" ni espacios.
+  // En la demo los pedidos llegan al desarrollador; para un cliente, poner el número del negocio.
+  whatsapp: "51986088743",
   direccion: "Av. José Balta 1250, Chiclayo",
   referencia: "A dos cuadras del Mercado Modelo",
   mapa: "https://www.openstreetmap.org/export/embed.html?bbox=-79.8475%2C-6.7735%2C-79.8335%2C-6.7655&layer=mapnik&marker=-6.7695%2C-79.8405",
